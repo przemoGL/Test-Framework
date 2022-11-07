@@ -2,7 +2,7 @@
 
 
 ## Source
-[![alt text](https://ipatryk.pl/wp-content/uploads/2017/06/github.png)](https://github.com/sergii-butenko-gl/talend-eng-II)
+[![alt text](https://miro.medium.com/max/719/0*LqBi2dONH28oTKVX.png)](https://github.com/sergii-butenko-gl/talend-eng-II)
 
 
 ## Technologies
@@ -16,20 +16,26 @@
 - /src
   - /config
     - config.py
+    - base_provider.py
+    - os_provider.py
+    - json_provider.py
   - /data
   - /models
   - /providers
 - /tests
   - test_input_type.py
 
-### /src/config/config.py
+### config.py
 Configuration of framework.
-Allows to register specific data from system environment variables and JSON files.
+Allows to register specific data from providers.
+
+### ._provider.py
+Specific data providers configurations.
 
 ### /envs_config
-Storage of files with providers data.
+Storage of providers data files.
 
-### /tests/test_input_type.py
+### test_input_type.py
 Tests to verify correctness of input data with Python data types.
 
 
