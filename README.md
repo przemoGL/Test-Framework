@@ -6,8 +6,10 @@
 
 
 ## Technologies
-- Python 3.11
-- Pytest 7.2.0
+| Tool   | Version |
+|--------|---------|
+| Python | 3.11    | 
+| Pytest | 7.2.0   |
 
 
 ## Structure
@@ -25,21 +27,42 @@
 - /tests
   - test_input_type.py
 
-### config.py
-Configuration of framework.
-Allows to register specific data from providers.
+| File               | Description                                     |
+|--------------------|-------------------------------------------------|
+| config.py          | Configurator of registering data from providers | 
+| os_provider.py     | System environment variables provider           |
+| json_provider.py   | JSON data provider                              |
+| base_provider.py   | Verifier of correctness provider configuration  |
+| dev.json           | Data used by JSON provider                      |
+| test_input_type.py | Tests verifying correctness of data type input  |
 
-### ._provider.py
-Specific data providers configurations.
 
-### /envs_config
-Storage of providers data files.
+## Environment preparing
+```bash
+$ pip install -r requirements.txt
+```
 
-### test_input_type.py
-Tests to verify correctness of input data with Python data types.
+## Providers instances creating
+```
+> config_name = Config([provider_objects])
+```
+
+## Registering data from provider
+```
+> config_name.register('data_key', path='optional_file_path')
+```
+
+## Reading registered data
+```
+> config_name.data_key
+```
 
 
 ## Tests running
 ```bash
 $ pytest ./tests/test_input_type.py
 ```
+
+## Author
+Przemysław Szpak\
+przemyslaw.szpak@globallogic.com

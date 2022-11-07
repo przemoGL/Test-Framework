@@ -28,21 +28,14 @@ class Config:
                 self.configs = self.configs | provider.get(item_key, path)
                 self.set_attributes()
                 return f'Registered all variables: {self.configs}'
-            # get specific data from OS provider
-            elif path is None and isinstance(provider, OSConfigProvider):
+            # get specific data from OS or JSON provider
+            elif (path is None and isinstance(provider, OSConfigProvider)) or \
+                 (path is not None and isinstance(provider, JSONConfigProvider)):
                 item_value = provider.get(item_key, path)
                 if item_value is not None:
                     self.configs[item_key] = item_value
                     self.set_attributes()
                     return f'Registered: {item_key} -> {item_value}'
-            # get specific data from JSON provider
-            elif path is not None and isinstance(provider, JSONConfigProvider):
-                item_value = provider.get(item_key, path)
-                if item_value is not None:
-                    self.configs[item_key] = item_value
-                    self.set_attributes()
-                    return f'Registered: {item_key} -> {item_value}'
-            # elif not (path is None and isinstance(provider, JSONConfigProvider))
         raise ValueError(f"There is no {item_key} in config providers")
 
     def set_attributes(self):
@@ -57,13 +50,13 @@ print('-------------------------------------------------------------------------
 # Register all variables from OS provider
 config_1 = Config([OSConfigProvider()])
 print(config_1.register())
-print(f'TEMP -> {config_1.TEMP}\n')
+print(f'TEMP -> {config_1.TEMP}\n')     # test
 
 print('-------------------------------------------------------------------------------------')
 # Register all variables from JSON provider
 config_2 = Config([JSONConfigProvider()])
 print(config_2.register(path='../../envs_config/dev.json'))
-print(f'SQL_CONNECTION_STRING -> {config_2.SQL_CONNECTION_STRING}\n')
+print(f'SQL_CONNECTION_STRING -> {config_2.SQL_CONNECTION_STRING}\n')     # test
 
 print('-------------------------------------------------------------------------------------')
 # Register selected variables from OS and JSON providers
@@ -71,6 +64,6 @@ config_3 = Config([OSConfigProvider(), JSONConfigProvider()])
 print(config_3.register("TEMP"))
 print(config_3.register("SQL_CONNECTION_STRING", path='../../envs_config/dev.json'))
 print()
-print(f'TEMP -> {config_3.TEMP}')
-print(f'SQL_CONNECTION_STRING -> {config_3.SQL_CONNECTION_STRING}')
+print(f'TEMP -> {config_3.TEMP}')     # test
+print(f'SQL_CONNECTION_STRING -> {config_3.SQL_CONNECTION_STRING}')     # test
 print('-------------------------------------------------------------------------------------')
