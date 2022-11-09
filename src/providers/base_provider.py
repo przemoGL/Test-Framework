@@ -5,7 +5,7 @@ class BaseProviderClass:
     """
 
     @staticmethod
-    def get(item_key=None, path=None):
+    def get(item_key='all', path=None):
         """
         Method for getting data from config provider.
         :param item_key: always default, that is parameter for another class

@@ -1,4 +1,4 @@
-# BUILDING FRAMEWORK
+# TESTING FRAMEWORK
 
 
 ## Source
@@ -18,23 +18,27 @@
 - /src
   - /config
     - config.py
-    - base_provider.py
-    - os_provider.py
-    - json_provider.py
   - /data
   - /models
   - /providers
+    - base_provider.py
+    - os_provider.py
+    - json_provider.py
 - /tests
+  - test_configuration.py
   - test_input_type.py
+- conftest.py
 
-| File               | Description                                     |
-|--------------------|-------------------------------------------------|
-| config.py          | Configurator of registering data from providers | 
-| os_provider.py     | System environment variables provider           |
-| json_provider.py   | JSON data provider                              |
-| base_provider.py   | Verifier of correctness provider configuration  |
-| dev.json           | Data used by JSON provider                      |
-| test_input_type.py | Tests verifying correctness of data type input  |
+| File                  | Description                                     |
+|-----------------------|-------------------------------------------------|
+| config.py             | Configurator of registering data from providers | 
+| os_provider.py        | System environment variables provider           |
+| json_provider.py      | JSON data provider                              |
+| base_provider.py      | Verifier of correctness provider configuration  |
+| dev.json              | Data used by JSON provider                      |
+| test_configuration.py | Tests verifying data configuration              |
+| test_input_type.py    | Tests verifying correctness of data type input  |
+| conftest.py           | Initializing configuration and fixtures         |
 
 
 ## Environment preparing
@@ -42,25 +46,26 @@
 $ pip install -r requirements.txt
 ```
 
-## Providers instances creating
-```
-> config_name = Config([provider_objects])
-```
+## Data providers configurating
+```python
+# provider initializing
+> config_name = Config([OSConfigProvider()])
+> config_name = Config([JSONConfigProvider()])
+> config_name = Config([OSConfigProvider(), JSONConfigProvider()])
 
-## Registering data from provider
-```
-> config_name.register('data_key', path='optional_file_path')
-```
+# data registering
+> config_name.register(item_key='all')
+> config_name.register(item_key='<data_key>')
+> config_name.register(item_key='all', json_path='<json_file_path>')
 
-## Reading registered data
-```
+# data getting
 > config_name.data_key
 ```
 
 
 ## Tests running
 ```bash
-$ pytest ./tests/test_input_type.py
+$ pytest ./tests/<test_name.py>
 ```
 
 ## Author
