@@ -20,6 +20,7 @@
     - config.py
   - /data
   - /models
+    - time_class.py
   - /providers
     - base_provider.py
     - os_provider.py
@@ -28,6 +29,7 @@
   - test_configuration.py
   - test_input_type.py
 - conftest.py
+- pytest.ini
 
 | File                  | Description                                     |
 |-----------------------|-------------------------------------------------|
@@ -36,9 +38,12 @@
 | json_provider.py      | JSON data provider                              |
 | base_provider.py      | Verifier of correctness provider configuration  |
 | dev.json              | Data used by JSON provider                      |
+| time_class.py         | Current time generator model                    |
 | test_configuration.py | Tests verifying data configuration              |
 | test_input_type.py    | Tests verifying correctness of data type input  |
-| conftest.py           | Initializing configuration and fixtures         |
+| conftest.py           | Fixtures to tests                               |
+| pytest.ini            | Tests warning ignoring settings                 |
+
 
 
 ## Environment preparing
@@ -65,7 +70,17 @@ $ pip install -r requirements.txt
 
 ## Tests running
 ```bash
-$ pytest ./tests/<test_name.py>
+# All configuration tests
+$ pytest ./tests/test_configuration.py
+
+# System configuration tests
+$ pytest ./tests/test_configuration.py -m system
+
+# Windows directory tests
+$ pytest ./tests/test_configuration.py -m windows_dir
+
+# JSON configuration tests
+$ pytest ./tests/test_configuration.py -m json
 ```
 
 ## Author
