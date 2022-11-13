@@ -1,30 +1,30 @@
-from src.config.config import Config, OSConfigProvider, JSONConfigProvider
-from src.models.time_class import Time
 import pytest
+from src.config.config import Config, JSONConfigProvider, OSConfigProvider
+from src.models.data_time import DataTime
+from src.models.user import User
 
 
 # Register system environment variables (all)
-@pytest.fixture
-def system_configuration():
-    system_configuration = Config([OSConfigProvider()])
-    system_configuration.register(item_key='all')
-    yield system_configuration
-    print('\nSystem data.')
-
+system_configuration = Config([OSConfigProvider()])
+system_configuration.register(item_key='all')
 
 # Register JSON data configuration
-@pytest.fixture
-def json_configuration():
-    json_configuration = Config([JSONConfigProvider()])
-    json_configuration.register(item_key="BASE_URL", json_path='../envs_config/dev.json')
-    json_configuration.register(item_key="SQL_CONNECTION_STRING", json_path='../envs_config/dev.json')
-    yield json_configuration
-    print('\nJSON data.')
+json_configuration = Config([JSONConfigProvider()])
+json_configuration.register(item_key="BASE_URL", json_path='../envs_config/dev.json')
+json_configuration.register(item_key="SQL_CONNECTION_STRING", json_path='../envs_config/dev.json')
 
 
 # Print date and time execution
 @pytest.fixture(scope='session')
 def time():
-    time = Time()
     yield
-    print(f'Date: {time.data()} \t Time: {time.hour()}')
+    time = DataTime()
+    print(f'\n\nDate: {time.data()} \t Time: {time.hour()}')
+
+
+# Generate, use and delete user
+@pytest.fixture(scope='function')
+def user(name, surname):
+    new_user = User(name, surname)
+    yield new_user
+    del new_user

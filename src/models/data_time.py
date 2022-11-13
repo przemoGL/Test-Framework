@@ -1,7 +1,7 @@
 import time
 
 
-class Time:
+class DataTime:
     def __init__(self):
         self.time = time
 

@@ -1,4 +1,4 @@
-# TESTING FRAMEWORK
+# TEST FRAMEWORK
 
 
 ## Source
@@ -20,7 +20,8 @@
     - config.py
   - /data
   - /models
-    - time_class.py
+    - time.py
+    - user.py
   - /providers
     - base_provider.py
     - os_provider.py
@@ -31,18 +32,19 @@
 - conftest.py
 - pytest.ini
 
-| File                  | Description                                     |
-|-----------------------|-------------------------------------------------|
-| config.py             | Configurator of registering data from providers | 
-| os_provider.py        | System environment variables provider           |
-| json_provider.py      | JSON data provider                              |
-| base_provider.py      | Verifier of correctness provider configuration  |
-| dev.json              | Data used by JSON provider                      |
-| time_class.py         | Current time generator model                    |
-| test_configuration.py | Tests verifying data configuration              |
-| test_input_type.py    | Tests verifying correctness of data type input  |
-| conftest.py           | Fixtures to tests                               |
-| pytest.ini            | Tests warning ignoring settings                 |
+| File                  | Description                                      |
+|-----------------------|--------------------------------------------------|
+| config.py             | Configurator of registering data from providers  | 
+| os_provider.py        | System environment variables provider            |
+| json_provider.py      | JSON data provider                               |
+| base_provider.py      | Verifier of correctness provider configuration   |
+| dev.json              | Data used by JSON provider                       |
+| time.py               | Current time generator model                     |
+| user.py               | User model                                       |
+| test_configuration.py | Tests verifying data configuration               |
+| test_input_type.py    | Tests verifying correctness of input data type   |
+| conftest.py           | Configuration initializing and fixtures to tests |
+| pytest.ini            | Tests warning ignoring settings                  |
 
 
 
@@ -51,19 +53,19 @@
 $ pip install -r requirements.txt
 ```
 
-## Data providers configurating
+## Data providers configuring
 ```python
-# provider initializing
+# provider initializing (possibilities)
 > config_name = Config([OSConfigProvider()])
 > config_name = Config([JSONConfigProvider()])
 > config_name = Config([OSConfigProvider(), JSONConfigProvider()])
 
-# data registering
+# data registering (possibilities)
 > config_name.register(item_key='all')
 > config_name.register(item_key='<data_key>')
 > config_name.register(item_key='all', json_path='<json_file_path>')
 
-# data getting
+# registered data getting
 > config_name.data_key
 ```
 
@@ -74,13 +76,16 @@ $ pip install -r requirements.txt
 $ pytest ./tests/test_configuration.py
 
 # System configuration tests
-$ pytest ./tests/test_configuration.py -m system
+$ pytest ./tests/test_configuration.py -k TestsSystem
 
-# Windows directory tests
-$ pytest ./tests/test_configuration.py -m windows_dir
+# Windows path tests
+$ pytest ./tests/test_configuration.py -m windows
 
 # JSON configuration tests
-$ pytest ./tests/test_configuration.py -m json
+$ pytest ./tests/test_configuration.py -k TestsJSON
+
+# User tests
+$ pytest ./tests/test_configuration.py -k TestsUser
 ```
 
 ## Author
