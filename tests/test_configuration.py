@@ -33,10 +33,14 @@ class TestsJSON:
 
 
 class TestsUser:
-    @pytest.mark.parametrize("name, surname, expected", [["Przemyslaw", "Szpak", 'przemyslaw.szpak@globallogic.com'], ["Jan", "Kowalski", 'jan.kowalski@globallogic.com']])
-    def test_email(self, user, expected):
-        assert user.email == expected
+    @pytest.mark.parametrize("name, surname, expected_email",
+                             [["Przemyslaw", "Szpak", 'przemyslaw.szpak@globallogic.com'],
+                              ["Jan", "Kowalski", 'jan.kowalski@globallogic.com']])
+    def test_email(self, user, expected_email):
+        assert user.email == expected_email
 
-    @pytest.mark.parametrize("name, surname", [["Przemyslaw", "Szpak"], ["Jan", "Kowalski"]])
+    @pytest.mark.parametrize("name, surname",
+                             [["Przemyslaw", "Szpak"],
+                              ["Jan", "Kowalski"]])
     def test_length(self, user):
         assert len(str(user)) == len(user.name) + len(user.surname) + len(user.email) + 1

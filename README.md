@@ -6,27 +6,32 @@
 
 
 ## Technologies
-| Tool   | Version |
-|--------|---------|
-| Python | 3.11    | 
-| Pytest | 7.2.0   |
+| Tool     | Version |
+|----------|---------|
+| Python   | 3.11    | 
+| Pytest   | 7.2.0   |
+| Requests | 2.28.1  |
 
 
 ## Structure
 - /envs_config
     - dev.json
 - /src
+  - /applications
+    - git_hub_api.py 
   - /config
     - config.py
   - /data
+     - api_data.py
   - /models
-    - time.py
+    - data_time.py
     - user.py
   - /providers
     - base_provider.py
-    - os_provider.py
     - json_provider.py
+    - os_provider.py
 - /tests
+  - test_api.py
   - test_configuration.py
   - test_input_type.py
 - conftest.py
@@ -39,10 +44,13 @@
 | json_provider.py      | JSON data provider                               |
 | base_provider.py      | Verifier of correctness provider configuration   |
 | dev.json              | Data used by JSON provider                       |
-| time.py               | Current time generator model                     |
+| data_time.py          | Current data and time generator model            |
 | user.py               | User model                                       |
-| test_configuration.py | Tests verifying data configuration               |
-| test_input_type.py    | Tests verifying correctness of input data type   |
+| git_hub_api.py        | GitHub API handling application                  |
+| api_data.py           | Data for GitHub API handling application         |
+| test_api.py           | Tests to verify GitHub API                       |
+| test_configuration.py | Tests to verify providers data                   |
+| test_input_type.py    | Tests to verify input data types                 |
 | conftest.py           | Configuration initializing and fixtures to tests |
 | pytest.ini            | Tests warning ignoring settings                  |
 
@@ -86,6 +94,9 @@ $ pytest ./tests/test_configuration.py -k TestsJSON
 
 # User tests
 $ pytest ./tests/test_configuration.py -k TestsUser
+
+# GitHub API tests
+$ pytest ./tests/test_api.py -k TestsAPI
 ```
 
 ## Author

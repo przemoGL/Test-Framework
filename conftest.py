@@ -2,6 +2,7 @@ import pytest
 from src.config.config import Config, JSONConfigProvider, OSConfigProvider
 from src.models.data_time import DataTime
 from src.models.user import User
+from src.applications.git_hub_api import GitHubApi
 
 
 # Register system environment variables (all)
@@ -28,3 +29,12 @@ def user(name, surname):
     new_user = User(name, surname)
     yield new_user
     del new_user
+
+
+# Login and logout user
+@pytest.fixture()
+def api(username):
+    api = GitHubApi()
+    api.login(username)
+    yield api
+    api.logout(username)
