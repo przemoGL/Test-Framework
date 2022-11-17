@@ -27,7 +27,7 @@ class Config:
             if item_key == 'all':
                 self.configs = self.configs | provider.get(item_key, json_path)
                 print(f'Registered all data from {str(provider)}.')
-            # register selected data
+            # register selected data from chosen provider
             elif (json_path is None and isinstance(provider, OSConfigProvider)) or \
                  (json_path is not None and isinstance(provider, JSONConfigProvider)):
                 item_value = provider.get(item_key, json_path)
@@ -46,3 +46,13 @@ class Config:
 
     def __str__(self):
         return f'{self.configs}'
+
+
+configuration = Config([OSConfigProvider(), JSONConfigProvider()])
+configuration.register(item_key='WINDIR')
+configuration.register(item_key='PATHEXT')
+configuration.register(item_key='ONEDRIVE')
+configuration.register(item_key='USERNAME')
+configuration.register(item_key='PYTHONUNBUFFERED')
+configuration.register(item_key='BASE_URL', json_path='../envs_config/json_provider_data.json')   # path for tests location
+configuration.register(item_key='SQL_CONNECTION_STRING', json_path='../envs_config/json_provider_data.json')   # path for tests location

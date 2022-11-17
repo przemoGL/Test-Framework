@@ -5,8 +5,8 @@ class DataTime:
     def __init__(self):
         self.time = time
 
-    def hour(self):
-        return self.time.strftime("%H:%M:%S")
-
-    def data(self):
+    def get_date(self):
         return self.time.strftime("%D")
+
+    def get_time(self):
+        return self.time.strftime("%H:%M:%S")

@@ -37,22 +37,22 @@
 - conftest.py
 - pytest.ini
 
-| File                  | Description                                      |
-|-----------------------|--------------------------------------------------|
-| config.py             | Configurator of registering data from providers  | 
-| os_provider.py        | System environment variables provider            |
-| json_provider.py      | JSON data provider                               |
-| base_provider.py      | Verifier of correctness provider configuration   |
-| dev.json              | Data used by JSON provider                       |
-| data_time.py          | Current data and time generator model            |
-| user.py               | User model                                       |
-| git_hub_api.py        | GitHub API handling application                  |
-| api_data.py           | Data for GitHub API handling application         |
-| test_api.py           | Tests to verify GitHub API                       |
-| test_configuration.py | Tests to verify providers data                   |
-| test_input_type.py    | Tests to verify input data types                 |
-| conftest.py           | Configuration initializing and fixtures to tests |
-| pytest.ini            | Tests warning ignoring settings                  |
+| File                    | Description                                    |
+|-------------------------|------------------------------------------------|
+| config.py               | Configurator to register data from providers   | 
+| os_provider.py          | System environment variables provider          |
+| json_provider.py        | JSON data provider                             |
+| base_provider.py        | Verifier of correctness provider configuration |
+| json_provider_data.json | Data used by JSON provider                     |
+| api_data.py             | Data used by API applications                  |
+| data_time.py            | Current data and time generator model          |
+| user.py                 | User model                                     |
+| github_api.py           | Handling GitHub API application                |
+| test_github_api.py      | Tests to verify GitHub API                     |
+| test_configuration.py   | Tests to verify providers data                 |
+| test_input_type.py      | Tests to verify input data types               |
+| conftest.py             | Fixtures used by tests                         |
+| pytest.ini              | Tests warning ignoring settings                |
 
 
 
@@ -96,7 +96,7 @@ $ pytest ./tests/test_configuration.py -k TestsJSON
 $ pytest ./tests/test_configuration.py -k TestsUser
 
 # GitHub API tests
-$ pytest ./tests/test_api.py -k TestsAPI
+$ pytest ./tests/test_github_api.py -k TestsAPI
 ```
 
 ## Author
