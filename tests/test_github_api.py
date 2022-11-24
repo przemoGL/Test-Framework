@@ -1,7 +1,7 @@
 import pytest
 
 
-class TestsAPI:
+class TestsGitHubAPI:
 
     @pytest.mark.parametrize("username, repository_path",
                              [["pszpak", "przemoGL/training"]])

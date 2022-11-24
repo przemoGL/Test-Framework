@@ -1,5 +1,8 @@
 import json
+import logging
 from src.providers.base_provider import BaseProviderClass
+
+log = logging.getLogger()
 
 
 class JSONConfigProvider(BaseProviderClass):
@@ -33,7 +36,7 @@ class JSONConfigProvider(BaseProviderClass):
         elif item_key in json_data:
             return json_data[item_key]
         else:
-            raise KeyError(f"No {item_key} in given file")
+            log.info(f"Can not register {item_key} - no item in given file")
 
     def __str__(self):
         return 'JSON config provider'

@@ -11,48 +11,43 @@
 | Python   | 3.11    | 
 | Pytest   | 7.2.0   |
 | Requests | 2.28.1  |
+| Selenium | 4.6.0   |
 
 
 ## Structure
-- /envs_config
-    - dev.json
+- /envs_config -> applications data
 - /src
-  - /applications
-    - git_hub_api.py 
-  - /config
-    - config.py
-  - /data
-     - api_data.py
-  - /models
-    - data_time.py
-    - user.py
-  - /providers
-    - base_provider.py
-    - json_provider.py
-    - os_provider.py
-- /tests
-  - test_api.py
-  - test_configuration.py
-  - test_input_type.py
-- conftest.py
-- pytest.ini
+  - /applications -> applications
+  - /config -> framework configuration
+  - /models -> applications classes
+  - /providers -> data providers
+    - /browsers -> browsers data providers
+- /tests -> applications and framework tests
 
-| File                    | Description                                    |
-|-------------------------|------------------------------------------------|
-| config.py               | Configurator to register data from providers   | 
-| os_provider.py          | System environment variables provider          |
-| json_provider.py        | JSON data provider                             |
-| base_provider.py        | Verifier of correctness provider configuration |
-| json_provider_data.json | Data used by JSON provider                     |
-| api_data.py             | Data used by API applications                  |
-| data_time.py            | Current data and time generator model          |
-| user.py                 | User model                                     |
-| github_api.py           | Handling GitHub API application                |
-| test_github_api.py      | Tests to verify GitHub API                     |
-| test_configuration.py   | Tests to verify providers data                 |
-| test_input_type.py      | Tests to verify input data types               |
-| conftest.py             | Fixtures used by tests                         |
-| pytest.ini              | Tests warning ignoring settings                |
+| File                    | Description                           |
+|-------------------------|---------------------------------------|
+| api_data.py             | Data used by GitHub API application   |
+| json_provider_data.json | Data used by JSON provider            |
+| base_ui.py              | Basic user interface operations class |
+| github_api.py           | GitHub API operations class           |
+| github_ui.py            | GitHub UI operations class            |
+| config.py               | Framework data configurator           | 
+| data_time.py            | Current data and time generator model |
+| user.py                 | User model                            |
+| base_browser.py         | Parent class for browser providers    |
+| browser_provider.py     | Browsers UI driver provider           |
+| chrome_provider.py      | Chrome UI driver provider             |
+| edge_provider.py        | Edge UI driver provider               |
+| firefox_provider.py     | Firefox UI driver provider            |
+| base_provider.py        | Parent class for data providers       |
+| json_provider.py        | JSON data provider                    |
+| os_provider.py          | System environment variables provider |
+| test_configuration.py   | Framework configuration data tests    |
+| test_github_api.py      | GitHub API tests                      |
+| test_github_ui.py       | GitHub UI tests                       |
+| test_input_type.py      | Input data types tests                |
+| conftest.py             | Fixtures used by tests                |
+| pytest.ini              | Pytest settings                       |
 
 
 
@@ -72,6 +67,7 @@ $ pip install -r requirements.txt
 > config_name.register(item_key='all')
 > config_name.register(item_key='<data_key>')
 > config_name.register(item_key='all', json_path='<json_file_path>')
+> config_name.register(item_key='<data_key>', json_path='<json_file_path>')
 
 # registered data getting
 > config_name.data_key
@@ -96,7 +92,10 @@ $ pytest ./tests/test_configuration.py -k TestsJSON
 $ pytest ./tests/test_configuration.py -k TestsUser
 
 # GitHub API tests
-$ pytest ./tests/test_github_api.py -k TestsAPI
+$ pytest ./tests/test_github_api.py -k TestsGitHubAPI
+
+# GitHub UI tests
+$ pytest ./tests/test_github_api.py -k TestsGitHubUI
 ```
 
 ## Author

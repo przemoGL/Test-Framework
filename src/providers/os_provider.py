@@ -1,5 +1,8 @@
 import os
+import logging
 from src.providers.base_provider import BaseProviderClass
+
+log = logging.getLogger()
 
 
 class OSConfigProvider(BaseProviderClass):
@@ -20,7 +23,7 @@ class OSConfigProvider(BaseProviderClass):
         elif item_key in os.environ:
             return os.getenv(item_key)
         else:
-            raise KeyError(f"No {item_key} in environment variables")
+            log.info(f"Can not register {item_key} - no item in environment variables")
 
     def __str__(self):
         return 'OS config provider'
