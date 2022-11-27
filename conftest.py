@@ -22,7 +22,7 @@ def user(name, surname):
     del user
 
 
-# Login and logout user
+# GitHub API generator (with user logger)
 @pytest.fixture()
 def github_api(username):
     github_api = GitHubApi()
@@ -31,7 +31,7 @@ def github_api(username):
     github_api.logout(username)
 
 
-# Handling GitHub page
+# GitHub UI generator
 @pytest.fixture(scope="class")
 def github_ui(request):
     browser = request.config.getoption("--browser")
@@ -41,7 +41,7 @@ def github_ui(request):
     github_ui.exit()
 
 
-# Browser configurator
+# Browser selector
 def pytest_addoption(parser):
     parser.addoption("--browser",
                      action="store",

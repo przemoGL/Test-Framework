@@ -6,22 +6,22 @@
 
 
 ## Technologies
-| Tool     | Version |
-|----------|---------|
-| Python   | 3.11    | 
-| Pytest   | 7.2.0   |
-| Requests | 2.28.1  |
-| Selenium | 4.6.0   |
+- Python
+- Pytest
+- Requests
+- Selenium
 
 
 ## Structure
 - /envs_config -> applications data
 - /src
   - /applications -> applications
-  - /config -> framework configuration
+  - /config -> framework config
   - /models -> applications classes
+  - /pages -> specific pages models
   - /providers -> data providers
-    - /browsers -> browsers data providers
+    - /browsers -> browsers providers
+    - /data -> data providers
 - /tests -> applications and framework tests
 
 | File                    | Description                           |
@@ -34,6 +34,8 @@
 | config.py               | Framework data configurator           | 
 | data_time.py            | Current data and time generator model |
 | user.py                 | User model                            |
+| login_page.py           | GitHub login page model               |
+| reset_password_page.py  | GitHub reset password page model      |
 | base_browser.py         | Parent class for browser providers    |
 | browser_provider.py     | Browsers UI driver provider           |
 | chrome_provider.py      | Chrome UI driver provider             |
@@ -42,7 +44,7 @@
 | base_provider.py        | Parent class for data providers       |
 | json_provider.py        | JSON data provider                    |
 | os_provider.py          | System environment variables provider |
-| test_configuration.py   | Framework configuration data tests    |
+| test_config.py          | Framework config data tests           |
 | test_github_api.py      | GitHub API tests                      |
 | test_github_ui.py       | GitHub UI tests                       |
 | test_input_type.py      | Input data types tests                |
@@ -76,26 +78,27 @@ $ pip install -r requirements.txt
 
 ## Tests running
 ```bash
-# All configuration tests
-$ pytest ./tests/test_configuration.py
+# All config tests
+$ pytest ./tests/test_config.py
 
-# System configuration tests
-$ pytest ./tests/test_configuration.py -k TestsSystem
+# System config tests
+$ pytest ./tests/test_config.py -k TestsSystem
 
 # Windows path tests
-$ pytest ./tests/test_configuration.py -m windows
+$ pytest ./tests/test_config.py -m windows
 
-# JSON configuration tests
-$ pytest ./tests/test_configuration.py -k TestsJSON
+# JSON config tests
+$ pytest ./tests/test_config.py -k TestsJSON
 
 # User tests
-$ pytest ./tests/test_configuration.py -k TestsUser
+$ pytest ./tests/test_config.py -k TestsUser
 
 # GitHub API tests
 $ pytest ./tests/test_github_api.py -k TestsGitHubAPI
 
 # GitHub UI tests
-$ pytest ./tests/test_github_api.py -k TestsGitHubUI
+$ pytest ./tests/test_github_ui.py -k TestsGitHubUI
+$ pytest ./tests/test_github_ui.py -k TestsGitHubUI --browser chrome/edge/firefox
 ```
 
 ## Author

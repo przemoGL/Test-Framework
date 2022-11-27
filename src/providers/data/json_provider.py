@@ -1,6 +1,6 @@
 import json
 import logging
-from src.providers.base_provider import BaseProviderClass
+from src.providers.data.base_provider import BaseProviderClass
 
 log = logging.getLogger()
 

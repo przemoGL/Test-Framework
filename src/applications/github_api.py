@@ -1,5 +1,6 @@
 import requests
-from envs_config.api_data import GITHUB_API_URL, GITHUB_RECOMMENDED_ACCEPT_HEADER
+from src.config.config import config
+from envs_config.api_data import GITHUB_RECOMMENDED_ACCEPT_HEADER
 
 
 class GitHubApi:
@@ -27,7 +28,7 @@ class GitHubApi:
         :return: repository info [dict]
         """
         r = requests.get(
-            url=GITHUB_API_URL + "search/repositories",
+            url=config.GITHUB_API_URL + "search/repositories",
             headers=GITHUB_RECOMMENDED_ACCEPT_HEADER,
             params={'q': repository_path}
             )
@@ -46,7 +47,7 @@ class GitHubApi:
         :return: found repositories with their details [list]
         """
         r = requests.get(
-            url=GITHUB_API_URL + "users/" + owner + "/repos",
+            url=config.GITHUB_API_URL + "users/" + owner + "/repos",
             headers=GITHUB_RECOMMENDED_ACCEPT_HEADER,
             params={'sort': sort_by}
             )
