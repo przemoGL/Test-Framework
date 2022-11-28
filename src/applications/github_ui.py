@@ -11,7 +11,7 @@ class GitHubUI(BaseUI):
         super().__init__(driver=driver)
         self.login_page = SignInPage(self)
         self.reset_password_page = ResetPasswordPage(self)
-        self.sing_up_page = SignUpPage(self)
+        self.sign_up_page = SignUpPage(self)
 
     def open_main_page(self):
         self.open_page(config.GITHUB_MAIN_URL)

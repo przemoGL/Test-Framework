@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 
 class SignInPage:
 
-    LOGIN_URL = config.GITHUB_MAIN_URL + "/login"
+    URL = config.GITHUB_MAIN_URL + "/login"
 
     username_field = (By.ID, "login_field")
     password_field = (By.ID, "password")
@@ -14,7 +14,7 @@ class SignInPage:
         self.github_ui_app = github_ui_app
 
     def open_login_panel(self):
-        self.github_ui_app.open_page(self.LOGIN_URL)
+        self.github_ui_app.open_page(self.URL)
 
     def login(self, username, password):
         self.github_ui_app.fill_field_by_text(*self.username_field, username)

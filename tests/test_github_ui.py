@@ -26,7 +26,7 @@ class TestsGitHubUI:
         assert task_before_refreshing != task_after_refreshing
 
     def test_password_requirement(self, github_ui):
-        github_ui.sing_up_page.open_sing_up_panel()
-        github_ui.sing_up_page.fill_email('test_email@email.com')
+        github_ui.sign_up_page.open_sing_up_panel()
+        github_ui.sign_up_page.fill_email('test_email@email.com')
         continue_button = github_ui.get_element(By.CLASS_NAME, "js-continue-button")
         assert continue_button.is_displayed() and not continue_button.is_enabled()

@@ -16,7 +16,7 @@
 - /envs_config -> applications data
 - /src
   - /applications -> applications
-  - /config -> framework config
+  - /config -> framework configuration
   - /models -> applications classes
   - /pages -> specific pages models
   - /providers -> data providers
@@ -34,8 +34,9 @@
 | config.py               | Framework data configurator             | 
 | data_time.py            | Current data and time generator model   |
 | user.py                 | User model                              |
-| login_page.py           | GitHub login page object model          |
 | reset_password_page.py  | GitHub reset password page object model |
+| sign_in_page.py         | GitHub sing-in page object model        |
+| sign_up_page.py         | GitHub sign-up page object model        |
 | base_browser.py         | Parent class for browser providers      |
 | browser_provider.py     | Browsers UI driver provider             |
 | chrome_provider.py      | Chrome UI driver provider               |

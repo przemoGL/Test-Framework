@@ -2,6 +2,11 @@ import logging
 from src.providers.data.os_provider import OSConfigProvider
 from src.providers.data.json_provider import JSONConfigProvider
 
+logging.basicConfig(
+    filename='test.log',
+    filemode='w',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s: %(message)s')
 log = logging.getLogger()
 
 

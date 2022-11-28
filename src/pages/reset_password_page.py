@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class ResetPasswordPage:
 
-    RESET_PASSWORD_URL = config.GITHUB_MAIN_URL + "/password_reset"
+    URL = config.GITHUB_MAIN_URL + "/password_reset"
 
     email_field = (By.ID, "email_field")
     submit_button = (By.NAME, "commit")
@@ -18,7 +18,7 @@ class ResetPasswordPage:
         self.github_ui_app = github_ui_app
 
     def open_password_resetting_panel(self):
-        self.github_ui_app.open_page(self.RESET_PASSWORD_URL)
+        self.github_ui_app.open_page(self.URL)
 
     def fill_email(self, email):
         self.github_ui_app.fill_field_by_text(*self.email_field, email)
