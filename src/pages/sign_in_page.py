@@ -1,8 +1,8 @@
-from selenium.webdriver.common.by import By
 from src.config.config import config
+from selenium.webdriver.common.by import By
 
 
-class LoginPage:
+class SignInPage:
 
     LOGIN_URL = config.GITHUB_MAIN_URL + "/login"
 

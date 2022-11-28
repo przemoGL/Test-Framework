@@ -24,32 +24,32 @@
     - /data -> data providers
 - /tests -> applications and framework tests
 
-| File                    | Description                           |
-|-------------------------|---------------------------------------|
-| api_data.py             | Data used by GitHub API application   |
-| json_provider_data.json | Data used by JSON provider            |
-| base_ui.py              | Basic user interface operations class |
-| github_api.py           | GitHub API operations class           |
-| github_ui.py            | GitHub UI operations class            |
-| config.py               | Framework data configurator           | 
-| data_time.py            | Current data and time generator model |
-| user.py                 | User model                            |
-| login_page.py           | GitHub login page model               |
-| reset_password_page.py  | GitHub reset password page model      |
-| base_browser.py         | Parent class for browser providers    |
-| browser_provider.py     | Browsers UI driver provider           |
-| chrome_provider.py      | Chrome UI driver provider             |
-| edge_provider.py        | Edge UI driver provider               |
-| firefox_provider.py     | Firefox UI driver provider            |
-| base_provider.py        | Parent class for data providers       |
-| json_provider.py        | JSON data provider                    |
-| os_provider.py          | System environment variables provider |
-| test_config.py          | Framework config data tests           |
-| test_github_api.py      | GitHub API tests                      |
-| test_github_ui.py       | GitHub UI tests                       |
-| test_input_type.py      | Input data types tests                |
-| conftest.py             | Fixtures used by tests                |
-| pytest.ini              | Pytest settings                       |
+| File                    | Description                             |
+|-------------------------|-----------------------------------------|
+| api_data.py             | Data used by GitHub API application     |
+| json_provider_data.json | Data used by JSON provider              |
+| base_ui.py              | Basic user interface operations class   |
+| github_api.py           | GitHub API operations class             |
+| github_ui.py            | GitHub UI operations class              |
+| config.py               | Framework data configurator             | 
+| data_time.py            | Current data and time generator model   |
+| user.py                 | User model                              |
+| login_page.py           | GitHub login page object model          |
+| reset_password_page.py  | GitHub reset password page object model |
+| base_browser.py         | Parent class for browser providers      |
+| browser_provider.py     | Browsers UI driver provider             |
+| chrome_provider.py      | Chrome UI driver provider               |
+| edge_provider.py        | Edge UI driver provider                 |
+| firefox_provider.py     | Firefox UI driver provider              |
+| base_provider.py        | Parent class for data providers         |
+| json_provider.py        | JSON data provider                      |
+| os_provider.py          | System environment variables provider   |
+| test_config.py          | Framework config data tests             |
+| test_github_api.py      | GitHub API tests                        |
+| test_github_ui.py       | GitHub UI tests                         |
+| test_input_type.py      | Input data types tests                  |
+| conftest.py             | Fixtures used by tests                  |
+| pytest.ini              | Pytest settings                         |
 
 
 
