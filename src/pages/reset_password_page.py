@@ -21,11 +21,11 @@ class ResetPasswordPage:
         self.github_ui_app.open_page(self.URL)
 
     def fill_email(self, email):
-        self.github_ui_app.fill_field_by_text(*self.email_field, email)
+        self.github_ui_app.fill_field_by_text(self.email_field, email)
 
     def run_captcha(self):
         WebDriverWait(self.github_ui_app.driver, 10).until(EC.visibility_of_element_located(self.verify_captcha_button))
-        self.github_ui_app.click(*self.verify_captcha_button)   # Can not click... captcha security reason?
+        self.github_ui_app.click(self.verify_captcha_button)   # Can not click... captcha security reason?
 
     def solve_captcha(self):
         # Some complicated script to hack captcha
@@ -33,10 +33,10 @@ class ResetPasswordPage:
 
     def get_captcha_task(self):
         WebDriverWait(self.github_ui_app.driver, 5).until(EC.visibility_of_element_located(self.captcha_task))
-        return self.github_ui_app.get_element(*self.captcha_task).text
+        return self.github_ui_app.get_element(self.captcha_task).text
 
     def refresh_captcha(self):
-        self.github_ui_app.click(*self.refresh_captcha_button)
+        self.github_ui_app.click(self.refresh_captcha_button)
 
     def confirm_password_resetting(self):
-        self.github_ui_app.click(*self.submit_button)
+        self.github_ui_app.click(self.submit_button)

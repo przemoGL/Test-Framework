@@ -1,8 +1,6 @@
 import json
-import logging
+from logger import Logger
 from src.providers.data.base_provider import BaseProviderClass
-
-log = logging.getLogger()
 
 
 class JSONConfigProvider(BaseProviderClass):
@@ -36,7 +34,7 @@ class JSONConfigProvider(BaseProviderClass):
         elif item_key in json_data:
             return json_data[item_key]
         else:
-            log.info(f"Can not register {item_key} - no item in given file")
+            Logger.log.warning(f"Can not register {item_key} - no item in given JSON file.")
 
     def __str__(self):
         return 'JSON config provider'

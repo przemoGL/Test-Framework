@@ -9,15 +9,15 @@ class BaseUI:
     def get_title(self):
         return self.driver.title
 
-    def get_element(self, locator_type, locator_value):
-        return self.driver.find_element(locator_type, locator_value)
+    def get_element(self, locator):
+        return self.driver.find_element(*locator)
 
-    def click(self, locator_type, locator_value):
-        element = self.get_element(locator_type, locator_value)
+    def click(self, locator):
+        element = self.get_element(locator)
         element.click()
 
-    def fill_field_by_text(self, locator_type, locator_value, text):
-        field = self.get_element(locator_type, locator_value)
+    def fill_field_by_text(self, locator, text):
+        field = self.get_element(locator)
         field.send_keys(text)
 
     def exit(self):

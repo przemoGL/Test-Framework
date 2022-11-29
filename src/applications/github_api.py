@@ -1,10 +1,12 @@
 import requests
 from src.config.config import config
-from envs_config.api_data import GITHUB_RECOMMENDED_ACCEPT_HEADER
 
 
 class GitHubApi:
-    def login(self, user_name):
+    GITHUB_RECOMMENDED_ACCEPT_HEADER = {"accept": "application/vnd.github+json"}
+
+    @staticmethod
+    def login(user_name):
         """
         User logging-in procedure.
         :param user_name: User name to log-in [str]
@@ -12,7 +14,8 @@ class GitHubApi:
         # Any log-in logic
         print(f"\nUser '{user_name}' logged in")
 
-    def logout(self, user_name):
+    @staticmethod
+    def logout(user_name):
         """
         User logging-out procedure.
         :param user_name: User name to log-out [str]
@@ -29,7 +32,7 @@ class GitHubApi:
         """
         r = requests.get(
             url=config.GITHUB_API_URL + "search/repositories",
-            headers=GITHUB_RECOMMENDED_ACCEPT_HEADER,
+            headers=self.GITHUB_RECOMMENDED_ACCEPT_HEADER,
             params={'q': repository_path}
             )
         r.raise_for_status()
@@ -48,7 +51,7 @@ class GitHubApi:
         """
         r = requests.get(
             url=config.GITHUB_API_URL + "users/" + owner + "/repos",
-            headers=GITHUB_RECOMMENDED_ACCEPT_HEADER,
+            headers=self.GITHUB_RECOMMENDED_ACCEPT_HEADER,
             params={'sort': sort_by}
             )
         r.raise_for_status()

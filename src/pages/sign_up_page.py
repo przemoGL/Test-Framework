@@ -19,5 +19,5 @@ class SignUpPage:
 
     def fill_email(self, email):
         WebDriverWait(self.github_ui_app.driver, 10).until(EC.visibility_of_element_located(self.email_field))
-        self.github_ui_app.fill_field_by_text(*self.email_field, email)
-        self.github_ui_app.click(*self.continue_button)
+        self.github_ui_app.fill_field_by_text(self.email_field, email)
+        self.github_ui_app.click(self.continue_button)

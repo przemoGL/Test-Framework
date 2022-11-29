@@ -1,13 +1,6 @@
-import logging
+from logger import Logger
 from src.providers.data.os_provider import OSConfigProvider
 from src.providers.data.json_provider import JSONConfigProvider
-
-logging.basicConfig(
-    filename='test.log',
-    filemode='w',
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s: %(message)s')
-log = logging.getLogger()
 
 
 class Config:
@@ -17,7 +10,7 @@ class Config:
 
     def __init__(self, config_providers: list):
         """
-        Method to initializing providers and creating empty container for settings [dict].
+        Method to initializing providers and creating empty container for registered data [dict].
         :param config_providers: instances of wanted providers [list]
         """
         self.config_providers = config_providers
@@ -41,14 +34,9 @@ class Config:
                 item_value = provider.get(item_key, json_path)
                 if item_value is not None:
                     self.configs[item_key] = item_value
-                    log.info(f'Registered {item_key} from {str(provider)}.')
-                    print(f'Registered {item_key} from {str(provider)}.')
-                else:
-                    log.warning(f"Can not register {item_key} - key not exist in providers.")
-                    print(f"Can not register {item_key} - key not exist in providers.")
+                    Logger.log.info(f'Registered {item_key} from {str(provider)}.')
 
         self.set_attributes()
-        return f'Registered attributes: {self.configs}'
 
     def set_attributes(self):
         """
@@ -56,8 +44,6 @@ class Config:
         """
         for item_key, item_value in self.configs.items():
             setattr(self, item_key, item_value)
-
-        log.info(f'Registered attributes: {self.configs}')
 
     def __str__(self):
         return f'{self.configs}'
@@ -77,3 +63,4 @@ config.register(item_key='GITHUB_MAIN_URL',
                 json_path='../envs_config/dev.json')  # path from tests perspective
 config.register(item_key='GITHUB_API_URL',
                 json_path='../envs_config/dev.json')  # path from tests perspective
+Logger.log.info(f'Registered attributes: {config.configs}')
