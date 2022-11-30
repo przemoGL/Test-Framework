@@ -3,5 +3,8 @@
     "SQL_CONNECTION_STRING": "SQL://username@ip:db_name",
 
     "GITHUB_MAIN_URL": "https://github.com",
-    "GITHUB_API_URL": "http://api.github.com/"
+    "GITHUB_API_URL": "http://api.github.com/",
+
+    "BROWSER": "chrome",
+    "SELENIUM_GRID_URL": "http://0.0.0.0:4444/wd/hub"
 }

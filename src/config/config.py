@@ -50,17 +50,17 @@ class Config:
 
 
 config = Config([OSConfigProvider(), JSONConfigProvider()])
+json = '../envs_config/dev.json'   # path from tests perspective
+
 config.register(item_key='WINDIR')
 config.register(item_key='PATHEXT')
 config.register(item_key='ONEDRIVE')
 config.register(item_key='USERNAME')
 config.register(item_key='PYTHONUNBUFFERED')
-config.register(item_key='BASE_URL',
-                json_path='../envs_config/dev.json')  # path from tests perspective
-config.register(item_key='SQL_CONNECTION_STRING',
-                json_path='../envs_config/dev.json')  # path from tests perspective
-config.register(item_key='GITHUB_MAIN_URL',
-                json_path='../envs_config/dev.json')  # path from tests perspective
-config.register(item_key='GITHUB_API_URL',
-                json_path='../envs_config/dev.json')  # path from tests perspective
+config.register(item_key='BASE_URL', json_path=json)
+config.register(item_key='SQL_CONNECTION_STRING', json_path=json)
+config.register(item_key='GITHUB_MAIN_URL', json_path=json)
+config.register(item_key='GITHUB_API_URL', json_path=json)
+config.register(item_key='BROWSER', json_path=json)
+config.register(item_key='SELENIUM_GRID_URL', json_path=json)
 Logger.log.info(f'Registered attributes: {config.configs}')

@@ -45,6 +45,6 @@ def github_ui(request):
 def pytest_addoption(parser):
     parser.addoption("--browser",
                      action="store",
-                     choices=["chrome", "edge", "firefox"],
+                     choices=["chrome", "edge", "firefox", "remote_chrome"],
                      default="chrome",
                      help="Choose a browser")
