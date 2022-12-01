@@ -1,13 +1,15 @@
 from src.providers.browsers.chrome_browser import ChromeBrowser
 from src.providers.browsers.firefox_browser import FirefoxBrowser
 from src.providers.browsers.edge_browser import EdgeBrowser
+from src.providers.browsers.remote_chrome_browser import RemoteChromeBrowser
 
 
 class BrowserProvider:
     MAPPER = {
         "chrome": ChromeBrowser,
         "firefox": FirefoxBrowser,
-        "edge": EdgeBrowser
+        "edge": EdgeBrowser,
+        "remote_chrome": RemoteChromeBrowser
     }
 
     @classmethod

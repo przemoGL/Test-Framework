@@ -1,5 +1,6 @@
-from src.providers.os_provider import OSConfigProvider
-from src.providers.json_provider import JSONConfigProvider
+from logger import Logger
+from src.providers.data.os_provider import OSConfigProvider
+from src.providers.data.json_provider import JSONConfigProvider
 
 
 class Config:
@@ -9,13 +10,13 @@ class Config:
 
     def __init__(self, config_providers: list):
         """
-        Method to initializing providers and creating empty container for settings [dict].
+        Method to initializing providers and creating empty container for registered data [dict].
         :param config_providers: instances of wanted providers [list]
         """
         self.config_providers = config_providers
         self.configs = {}
 
-    def register(self, item_key=None, json_path=None):
+    def register(self, item_key='all', json_path=None):
         """
         Method to registering wanted data to configs [dict] from providers.
         :param item_key: name (key) of wanted variable [str], default 'None' means all variables
@@ -33,11 +34,9 @@ class Config:
                 item_value = provider.get(item_key, json_path)
                 if item_value is not None:
                     self.configs[item_key] = item_value
-                else:
-                    raise Exception('Key not exist.')
-                print(f'Registered {item_key} from {str(provider)}.')
+                    Logger.log.info(f'Registered {item_key} from {str(provider)}.')
+
         self.set_attributes()
-        return f'Now registered: {self.configs}'
 
     def set_attributes(self):
         """
@@ -50,15 +49,18 @@ class Config:
         return f'{self.configs}'
 
 
-configuration = Config([OSConfigProvider(), JSONConfigProvider()])
-configuration.register(item_key='WINDIR')
-configuration.register(item_key='PATHEXT')
-configuration.register(item_key='ONEDRIVE')
-configuration.register(item_key='USERNAME')
-configuration.register(item_key='PYTHONUNBUFFERED')
-configuration.register(item_key='BASE_URL',
-                       json_path='../envs_config/json_provider_data.json')  # path from tests perspective
-configuration.register(item_key='SQL_CONNECTION_STRING',
-                       json_path='../envs_config/json_provider_data.json')  # path from tests perspective
-configuration.register(item_key='GITHUB_MAIN_URL',
-                       json_path='../envs_config/json_provider_data.json')  # path from tests perspective
+config = Config([OSConfigProvider(), JSONConfigProvider()])
+json = '../envs_config/dev.json'   # path from tests perspective
+
+config.register(item_key='WINDIR')
+config.register(item_key='PATHEXT')
+config.register(item_key='ONEDRIVE')
+config.register(item_key='USERNAME')
+config.register(item_key='PYTHONUNBUFFERED')
+config.register(item_key='BASE_URL', json_path=json)
+config.register(item_key='SQL_CONNECTION_STRING', json_path=json)
+config.register(item_key='GITHUB_MAIN_URL', json_path=json)
+config.register(item_key='GITHUB_API_URL', json_path=json)
+config.register(item_key='BROWSER', json_path=json)
+config.register(item_key='SELENIUM_GRID_URL', json_path=json)
+Logger.log.info(f'Registered attributes: {config.configs}')

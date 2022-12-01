@@ -6,7 +6,7 @@ from src.applications.github_ui import GitHubUI
 from src.providers.browsers.browser_provider import BrowserProvider
 
 
-# Print date and time execution
+# Date-time
 @pytest.fixture(scope="session")
 def time():
     yield
@@ -14,7 +14,7 @@ def time():
     print(f'\n\nDate: {data_time.get_date()} \t Time: {data_time.get_time()}')
 
 
-# Generate, use and delete user
+# User
 @pytest.fixture(scope="function")
 def user(name, surname):
     user = User(name, surname)
@@ -22,7 +22,7 @@ def user(name, surname):
     del user
 
 
-# Login and logout user
+# GitHub API (with user logger)
 @pytest.fixture()
 def github_api(username):
     github_api = GitHubApi()
@@ -31,7 +31,7 @@ def github_api(username):
     github_api.logout(username)
 
 
-# Handling GitHub page
+# GitHub UI
 @pytest.fixture(scope="class")
 def github_ui(request):
     browser = request.config.getoption("--browser")
@@ -41,10 +41,10 @@ def github_ui(request):
     github_ui.exit()
 
 
-# Browser configurator
+# Browser selector
 def pytest_addoption(parser):
     parser.addoption("--browser",
                      action="store",
-                     choices=["chrome", "edge", "firefox"],
+                     choices=["chrome", "edge", "firefox", "remote_chrome"],
                      default="chrome",
                      help="Choose a browser")

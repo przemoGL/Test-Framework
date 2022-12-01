@@ -1,35 +1,35 @@
 import pytest
-from src.config.config import configuration
+from src.config.config import config
 
 
 @pytest.mark.usefixtures("time")
 class TestsSystem:
     @pytest.mark.windows
     def test_windows_directory(self):
-        assert configuration.WINDIR == "C:\\Windows"
+        assert config.WINDIR == "C:\\Windows"
 
     @pytest.mark.windows
     def test_path_ext(self):
-        assert ".CMD" in configuration.PATHEXT
+        assert ".CMD" in config.PATHEXT
 
     def test_onedrive(self):
-        assert hasattr(configuration, "ONEDRIVE")
+        assert hasattr(config, "ONEDRIVE")
 
     @pytest.mark.xfail(reason="Compared user name is correct")
     def test_user_negative(self):
-        assert configuration.USERNAME != "przemyslaw.szpak"
+        assert config.USERNAME != "przemyslaw.szpak"
 
     @pytest.mark.skip("Using from terminal causes failing")
     def test_python(self):
-        assert int(configuration.PYTHONUNBUFFERED) == 1
+        assert int(config.PYTHONUNBUFFERED) == 1
 
 
 class TestsJSON:
     def test_sql_connection(self):
-        assert configuration.SQL_CONNECTION_STRING.startswith("SQL://")
+        assert config.SQL_CONNECTION_STRING.startswith("SQL://")
 
     def test_base_url(self):
-        assert "google" in configuration.BASE_URL
+        assert "google" in config.BASE_URL
 
 
 class TestsUser:
