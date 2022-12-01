@@ -29,7 +29,7 @@ services:
       - "4444:4444"
 
   automated-tests:
-    container_name: te2
+    container_name: Test-Framework
     dockerfile: ./dockerfile
     environment:
       SELENIUM_GRID_URL: http://selenium-hub:4444/wd/hub
