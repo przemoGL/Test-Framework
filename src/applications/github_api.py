@@ -41,18 +41,19 @@ class GitHubApi:
         else:
             return r.json()
 
-    def get_user_repositories(self, owner, sort_by="full_name"):
+    def get_user_repositories(self, username_path_param, sort="full_name", direction='asc'):
         """
         Get all public repositories of given owner.
         Documentation: https://docs.github.com/en/rest/repos/repos#list-repositories-for-a-user
-        :param owner: desirable owner of repositories [str]
-        :param sort_by: type of sorting result - can be full_name (default), created, updated or pushed [str]
+        :param username_path_param: desirable owner of repositories [str]
+        :param sort: type of sorting result - can be full_name (default), created, updated or pushed [str]
+        :param direction: the order of sort by - can be asc (default) or desc
         :return: found repositories with their details [list]
         """
         r = requests.get(
-            url=config.GITHUB_API_URL + "users/" + owner + "/repos",
+            url=config.GITHUB_API_URL + "users/" + username_path_param + "/repos",
             headers=self.GITHUB_RECOMMENDED_ACCEPT_HEADER,
-            params={'sort': sort_by}
+            params={'sort': sort, 'direction': direction}
             )
         r.raise_for_status()
         return r.json()
