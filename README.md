@@ -84,27 +84,33 @@ $ pip install -r requirements.txt
 
 ## Tests running
 ```bash
-# All config tests
-$ pytest ./tests/test_config.py
+# Go to tests path
+$ cd tests
 
-# System config tests
-$ pytest ./tests/test_config.py -k TestsSystem
+# Run all tests
+$ pytest
 
-# Windows path tests
-$ pytest ./tests/test_config.py -m windows
+# Run all config tests
+$ pytest test_config.py
 
-# JSON config tests
-$ pytest ./tests/test_config.py -k TestsJSON
+# Run system config tests
+$ pytest test_config.py -k TestsSystem
 
-# User tests
-$ pytest ./tests/test_config.py -k TestsUser
+# Run Windows path tests
+$ pytest test_config.py -m windows
 
-# GitHub API tests
-$ pytest ./tests/test_github_api.py -k TestsGitHubAPI
+# Run JSON config tests
+$ pytest test_config.py -k TestsJSON
 
-# GitHub UI tests
-$ pytest ./tests/test_github_ui.py -k TestsGitHubUI
-$ pytest ./tests/test_github_ui.py -k TestsGitHubUI --browser chrome/edge/firefox/remote_chrome
+# Run user tests
+$ pytest test_config.py -k TestsUser
+
+# Run GitHub API tests
+$ pytest test_github_api.py -k TestsGitHubAPI
+
+# Run GitHub UI tests
+$ pytest test_github_ui.py -k TestsGitHubUI
+$ pytest test_github_ui.py -k TestsGitHubUI --browser chrome/edge/firefox/remote_chrome
 ```
 
 ## Author

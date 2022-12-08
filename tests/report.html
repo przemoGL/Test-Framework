@@ -439,7 +439,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 30-Nov-2022 at 15:47:46 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <p>Report generated on 08-Dec-2022 at 20:30:16 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -455,8 +455,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.11.0</td></tr></table>
     <h2>Summary</h2>
-    <p>3 tests ran in 10.75 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">3 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">1 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>10 tests ran in 0.07 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">9 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">1 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">1 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -467,34 +467,29 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="skipped results-table-row">
+      <tbody class="xfailed results-table-row">
         <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">tests/test_github_ui.py::TestsGitHubUI::test_refresh_captcha</td>
+          <td class="col-result">XFailed</td>
+          <td class="col-name">tests/test_configuration.py::TestsSystem::test_user_negative</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">(&#x27;C:\\DATA\\GIT\\Test-Framework\\tests\\test_github_ui.py&#x27;, 15, &#x27;Skipped: Captcha blocking&#x27;)<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
+            <div class="log">self = &lt;test_configuration.TestsSystem object at 0x000001AD1B81E150&gt;<br/><br/>&gt;   ???<br/><span class="error">E   AssertionError: assert &#x27;przemyslaw.szpak&#x27; != &#x27;przemyslaw.szpak&#x27;</span><br/><span class="error">E    +  where &#x27;przemyslaw.szpak&#x27; = &lt;src.config.config.Config object at 0x000001AD1AD67990&gt;.USERNAME</span><br/><br/>C:\DATA\GIT\training\tests\test_configuration.py:20: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
         <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">tests/test_github_ui.py::TestsGitHubUI::test_main_page_title</td>
-          <td class="col-duration">3.95</td>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">tests/test_configuration.py::TestsSystem::test_python</td>
+          <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> -----------------------------Captured stderr setup------------------------------ <br/>2022-11-30 15:47:36,254 - WDM - INFO - ====== WebDriver manager ======
-2022-11-30 15:47:36,782 - WDM - INFO - Get LATEST chromedriver version for google-chrome 107.0.5304
-2022-11-30 15:47:37,392 - WDM - INFO - Driver [C:\Users\przemyslaw.szpak\.wdm\drivers\chromedriver\win32\107.0.5304\chromedriver.exe] found in cache
-<br/> -------------------------------Captured log setup------------------------------- <br/>INFO     WDM:logger.py:11 ====== WebDriver manager ======
-INFO     WDM:logger.py:11 Get LATEST chromedriver version for google-chrome 107.0.5304
-INFO     WDM:logger.py:11 Driver [C:\Users\przemyslaw.szpak\.wdm\drivers\chromedriver\win32\107.0.5304\chromedriver.exe] found in cache<br/></div></td></tr></tbody>
+            <div class="log">(&#x27;C:\\DATA\\GIT\\training\\tests\\test_configuration.py&#x27;, 22, &#x27;Skipped: Using from terminal causes failing&#x27;)<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">tests/test_github_ui.py::TestsGitHubUI::test_incorrect_loging_in</td>
-          <td class="col-duration">1.21</td>
+          <td class="col-name">tests/test_configuration.py::TestsSystem::test_windows_directory</td>
+          <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -502,9 +497,75 @@ INFO     WDM:logger.py:11 Driver [C:\Users\przemyslaw.szpak\.wdm\drivers\chromed
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">tests/test_github_ui.py::TestsGitHubUI::test_password_requirement</td>
-          <td class="col-duration">5.56</td>
+          <td class="col-name">tests/test_configuration.py::TestsSystem::test_path_ext</td>
+          <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody></table></body></html>
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_configuration.py::TestsSystem::test_onedrive</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_configuration.py::TestsJSON::test_sql_connection</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_configuration.py::TestsJSON::test_base_url</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_configuration.py::TestsUser::test_email[Przemyslaw-Szpak-przemyslaw.szpak@globallogic.com]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_configuration.py::TestsUser::test_email[Jan-Kowalski-jan.kowalski@globallogic.com]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_configuration.py::TestsUser::test_length[Przemyslaw-Szpak]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_configuration.py::TestsUser::test_length[Jan-Kowalski]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ----------------------------Captured stdout teardown---------------------------- <br/>
+
+Date: 12/08/22 	 Time: 20:30:16
+<br/></div></td></tr></tbody></table></body></html>
